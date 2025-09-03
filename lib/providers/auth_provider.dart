@@ -8,7 +8,7 @@ class AuthProvider with ChangeNotifier {
 
   User? get currentUser => _auth.currentUser;
 
-  // 🔹 Register User
+  //  Register User
   Future<String?> registerUser({
     required String email,
     required String password,
@@ -17,7 +17,7 @@ class AuthProvider with ChangeNotifier {
     Map<String, dynamic>? otherDetails,
   }) async {
     try {
-      // ✅ Create User in Firebase Auth
+      // Create User in Firebase Auth
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
@@ -28,10 +28,10 @@ class AuthProvider with ChangeNotifier {
       if (user != null) {
         String userId = user.uid;
 
-        // ✅ Update display name in Firebase Auth profile
+        // Update display name in Firebase Auth profile
         await user.updateDisplayName(displayName);
 
-        // ✅ Save user data in Firestore
+        // Save user data in Firestore
         await _firestore.collection('users').doc(userId).set({
           'uid': userId,
           'displayName': displayName,
@@ -57,7 +57,7 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  // 🔹 Login User
+  //  Login User
   Future<String?> loginUser({
     required String email,
     required String password,
@@ -75,12 +75,12 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  // 🔹 Logout
+  //  Logout
   Future<void> logout() async {
     await _auth.signOut();
     notifyListeners();
   }
 
-  // 🔹 Listen to auth state
+  // Listen to auth state
   Stream<User?> get authStateChanges => _auth.authStateChanges();
 }

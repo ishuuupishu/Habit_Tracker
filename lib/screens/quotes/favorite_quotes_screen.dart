@@ -6,7 +6,6 @@ import '../../constants/app_colors.dart';
 import '../../constants/app_icons.dart';
 import '../../providers/quotes_provider.dart';
 import '../../widgets/quote_card.dart';
-import '../../models/quote_model.dart';
 
 class FavoriteQuotesScreen extends StatelessWidget {
   const FavoriteQuotesScreen({Key? key}) : super(key: key);

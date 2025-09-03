@@ -26,7 +26,7 @@ class HabitProvider extends ChangeNotifier {
 
   Future<void> addOrUpdateHabit(HabitModel habit) async {
     await _firestoreService.saveHabit(userId, habit);
-    // Firestore listener will auto-update _habits
+    
   }
   Future<void> deleteHabit(String habitId) async {
     await _firestoreService.deleteHabit(userId, habitId);
